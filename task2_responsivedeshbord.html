@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white dark:bg-gray-800 p-5 hidden md:block">
+            <h2 class="text-2xl font-bold">Dashboard</h2>
+            <ul class="mt-5 space-y-3">
+                <li class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">Home</li>
+                <li class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">Analytics</li>
+                <li class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">Reports</li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Navbar -->
+            <nav class="flex justify-between items-center p-4 bg-white dark:bg-gray-800 shadow rounded-lg">
+                <h1 class="text-xl font-semibold">Dashboard</h1>
+                <button onclick="toggleDarkMode()" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">🌙</button>
+            </nav>
+            
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">Card 1</div>
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">Card 2</div>
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">Card 3</div>
+            </div>
+            
+            <!-- Chart Section -->
+            <div class="mt-5 p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <canvas id="myChart"></canvas>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark');
+        }
+
+        // Chart.js Example
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
